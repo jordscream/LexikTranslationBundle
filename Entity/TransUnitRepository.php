@@ -173,14 +173,14 @@ class TransUnitRepository extends EntityRepository
     protected function addTransUnitFilters(QueryBuilder $builder, array $locales = null, array $filters = null)
     {
         if (isset($filters['_search']) && $filters['_search']) {
-            if (!empty($filters['domain'])) {
+            if (!empty($filters['_domain'])) {
                 $builder->andWhere($builder->expr()->like('tu.domain', ':domain'))
-                    ->setParameter('domain', sprintf('%%%s%%', $filters['domain']));
+                    ->setParameter('domain', sprintf('%%%s%%', $filters['_domain']));
             }
 
-            if (!empty($filters['key'])) {
+            if (!empty($filters['_key'])) {
                 $builder->andWhere($builder->expr()->like('tu.key', ':key'))
-                    ->setParameter('key', sprintf('%%%s%%', $filters['key']));
+                    ->setParameter('key', sprintf('%%%s%%', $filters['_key']));
             }
         }
     }
